@@ -1,0 +1,33 @@
+[project]
+name = "minimal-orpheus"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "llama-cpp-python>=0.3.9",
+    "snac>=1.2.1",
+    "torch>=2.7.1",
+    "torchaudio>=2.7.1",
+]
+
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+
+[[tool.uv.index]]
+name = "torchaudio-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+torchaudio = [
+  { index = "torchaudio-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
